@@ -1,12 +1,5 @@
-# requirements.txt
-fastapi
-uvicorn
-sqlalchemy
+streamlit
 psycopg2-binary
-python-jose
-passlib[bcrypt]
-python-multipart
-pydantic
-spacy
 pdfplumber
-python-docx
+sentence-transformers
+python-dotenv
