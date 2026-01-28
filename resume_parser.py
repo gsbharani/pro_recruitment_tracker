@@ -13,19 +13,14 @@ def extract_text(path):
                 text += page_text + " "
     return text.lower()
 
-def parse_resume(path):
-    text = extract_text(path)
+def parse_resume(path, skills=None):
+    text = extract_text(path).lower()
 
-    email = re.search(r"[\w\.-]+@[\w\.-]+", text)
+    email = re.search(r"[\w.-]+@[\w.-]+", text)
     phone = re.search(r"(\+91)?[6-9]\d{9}", text)
-    found_skills = [s for s in SKILLS if s in text]
-
-    exp_match = re.search(r"(\d+)\+?\s*years", text)
-    experience = int(exp_match.group(1)) if exp_match else 0
 
     return {
         "email": email.group(0) if email else None,
         "mobile": phone.group(0) if phone else None,
-        "skills": found_skills,
-        "experience": experience
+        "experience": 0
     }
